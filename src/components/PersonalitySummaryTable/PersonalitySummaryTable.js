@@ -7,19 +7,19 @@ const PersonalitySummaryTable = ({ personality }) => {
             <div className="overflow-hidden">
               <table className="min-w-full border border-gray-600">
                 <thead>
-                  <tr aria-colspan={2}>
-                    <th className="border-b p-2 text-black bg-white ">
+                  <tr>
+                    <th className="border-b text-left p-2 text-black bg-white ">
                       <h1>Personality Summary</h1>
                     </th>
-                    <th className="border-b p-2 text-black bg-white"></th>
+                    <th className="border-b py-2 text-black bg-white"></th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  {personality.map((element, index) => {
+                  {personality.map((element, i) => {
                     return (
                       <tr
-                        key={index}
+                        key={i}
                         className="bg-black text-white border-gray-600 border-b"
                       >
                         <td className="px-3 py-2 whitespace-nowrap text-sm font-medium ">
@@ -34,9 +34,12 @@ const PersonalitySummaryTable = ({ personality }) => {
                                   item.isHighlighted ? "" : "text-gray-500"
                                 }
                               >
+                                {i === 0 && (
+                                  <span className="rounded-full bg-yellow-500 text-sm h-3 w-3 inline-block mr-1"></span>
+                                )}
                                 {item.text}
                                 {index !== element.values.length - 1 && (
-                                  <span> / </span>
+                                  <span className="text-gray-500"> / </span>
                                 )}
                               </span>
                             );
