@@ -8,7 +8,7 @@ const PersonalitySummaryTable = ({ personality }) => {
               <table className="min-w-full border border-gray-600">
                 <thead>
                   <tr>
-                    <th className="border-b text-left p-2 text-black bg-white ">
+                    <th className="border-b text-left p-2  border-gray-600 text-black bg-white ">
                       <h1>Personality Summary</h1>
                     </th>
                     <th className="border-b py-2 text-black bg-white"></th>

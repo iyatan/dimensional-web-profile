@@ -28,3 +28,16 @@ export const getPersonalitySummaries = async (id) => {
     throw error;
   }
 };
+
+export const getTraits = async () => {
+  try {
+    const res = await axios.get(`${baseURL}/traits`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
