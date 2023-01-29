@@ -15,3 +15,16 @@ export const getProfile = async () => {
     throw error;
   }
 };
+
+export const getPersonalitySummaries = async (id) => {
+  try {
+    const res = await axios.get(`${baseURL}/personalitySummaries/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
