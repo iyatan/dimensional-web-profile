@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import Checkmarks from "./Checkmarks";
 import ElementCicle from "./ElementCircle";
 import ScoreBar from "./ScoreBar";
