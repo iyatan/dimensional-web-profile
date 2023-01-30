@@ -1,7 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
+import Checkmarks from "./Checkmarks";
+import ElementCicle from "./ElementCircle";
+import ScoreBar from "./ScoreBar";
 
-const Searchbar = ({ traits }) => {
-  const [showSuggestions, setShowSuggestions] = useState(true);
+const Searchbar = ({ traits, onFocus, onBlur, showSuggestions }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredTraits = useMemo(
@@ -16,13 +18,16 @@ const Searchbar = ({ traits }) => {
 
   return (
     <>
-      <form className="w-[55%]">
+      <form className="">
         <div
-          className="absolute  overflow-hidden rounded-md "
-          style={{ backgroundColor: showSuggestions ? "#2E2927" : "" }}
+          className={`block overflow-hidden rounded-md z-10 ${
+            !showSuggestions
+              ? "relative sm:fixed "
+              : "fixed bg-[#2E2927] w-[98%]  ml-[-25%] sm:w-auto sm:ml-[0%]"
+          }`}
         >
-          <div className="relative p-3">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <div className="relative sm:p-3  ">
+            <div className="absolute inset-y-0  flex items-center pl-3 pointer-events-none ">
               <svg
                 aria-hidden="true"
                 className="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -42,22 +47,36 @@ const Searchbar = ({ traits }) => {
             <input
               type="search"
               id="default-search"
-              className="block outline-none w-full px-4 py-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700"
+              className={`block outline-none py-2 text-sm text-gray-900 border border-gray-300  bg-gray-50 ${
+                !showSuggestions
+                  ? "w-10 h-10 sm:w-[30vw] sm:rounded-lg px-4 sm:px-10 rounded-full "
+                  : "rounded-lg w-screen mx-2   sm:w-[30vw] px-10 sm:px-10"
+              }`}
               placeholder="Search traits"
               required
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              onFocus={() => setShowSuggestions(true)}
-              onBlur={() => setShowSuggestions(false)}
+              onFocus={onFocus}
+              onBlur={onBlur}
             />
           </div>
           {showSuggestions && (
             <div className="pb-3">
               <div className="px-3 text-white  ">Traits</div>
               {filteredTraits.map((trait) => (
-                <div className="cursor-pointer py-2 px-3 border-2 border-white mx-2">
-                  <p className="text-sm font-medium ">{trait.name}</p>
-                  <p className="text-sm text-gray-500">{trait.description}</p>
+                <div className="cursor-pointer py-4 px-3 border-2 border-white mx-2 flex">
+                  <div className=" basis-[15%]">
+                    {" "}
+                    <ElementCicle colour={trait.colorHexCodes} />
+                  </div>
+                  <div className=" basis-[70%]">
+                    <p className="text-sm font-medium ">{trait.name}</p>
+                    <ScoreBar percentage={trait.score} />
+                  </div>
+                  <div className=" basis-[15%] text-right">
+                    <Checkmarks />
+                    <div> {Math.round(trait.score * 100)}</div>
+                  </div>
                 </div>
               ))}
             </div>

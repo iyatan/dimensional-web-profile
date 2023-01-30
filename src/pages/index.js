@@ -13,7 +13,8 @@ export default function Home() {
   const [error, setError] = useState(null);
   const [endorsement, setEndorsement] = useState([]);
   const [traits, setTraits] = useState([]);
-  console.log(traits);
+
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -37,31 +38,68 @@ export default function Home() {
     fetchProfileData();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  const handleShowSuggestions = (value) => {
+    setShowSuggestions(value);
+  };
+
+  if (loading) return <div className="text-white">Loading...</div>;
+  if (error) return <div className="text-white">Error: {error.message}</div>;
 
   return (
-    <div className="flex  bg-black h-full w-full text-white">
-      <div className="flex mx-[12.5%] w-full">
-        <div className="basis-[40%] pr-[10%] ">
-          <div className="mt-[3%] ">
-            <img
-              src="./images/logo-dimensional.png"
-              width={75}
-              alt="logo"
-            ></img>
-            <h1 width={300}>Dimensional</h1>
+    <div className="flex bg-black w-screen text-white">
+      <div className="flex flex-col sm:flex sm:flex-row m-2 sm:mx-[12.5%] w-full">
+        <div className="basis-[40%] sm:pr-[10%] ">
+          <div className="mt-[3%] flex  sm:block ">
+            <div>
+              <img
+                className="hidden sm:block"
+                src="./images/logo-dimensional.png"
+                width={75}
+                alt="logo"
+              ></img>
+              <h1 className="" width={300}>
+                Dimensional
+              </h1>
+            </div>
+
+            <div
+              className={`sm:hidden flex sm:mr-44 ${
+                !showSuggestions ? " ml-auto" : " ml-0"
+              }`}
+            >
+              <Searchbar
+                traits={traits}
+                onFocus={() => handleShowSuggestions(true)}
+                onBlur={() => handleShowSuggestions(false)}
+                showSuggestions={showSuggestions}
+              />
+            </div>
           </div>
-          <div className="mt-[8%]">
-            <ProfileFigure />
-            <div className="mt-[3%] mr-16">{profileData.description}</div>
+          <div className="mt-[8%] flex flex-col items-center">
+            <ProfileFigure size={200} />
+            <div className="sm:hidden text-center">
+              <div className="text-3xl text-center">{profileData.userName}</div>
+              <span>{profileData.profileUrl.slice(8)}</span>
+            </div>
+            <div className="flex">
+              <div className="sm:hidden mt-[3%] ">
+                <ProfileFigure size={50} />
+              </div>
+
+              <div className="mt-[3%] mr-16">{profileData.description}</div>
+            </div>
           </div>
         </div>
         <div className="basis-[60%]">
-          <div className="mt-[2%] flex justify-end">
-            <Searchbar traits={traits} />
+          <div className="mt-[2%] sm:flex hidden justify-end mr-[70%]">
+            <Searchbar
+              traits={traits}
+              onFocus={() => handleShowSuggestions(true)}
+              onBlur={() => handleShowSuggestions(false)}
+              showSuggestions={showSuggestions}
+            />
           </div>
-          <div className="mt-[5%]">
+          <div className="mt-[15%] hidden sm:block">
             <div className="text-5xl">{profileData.userName}</div>
             <span>{profileData.profileUrl.slice(8)}</span>
           </div>
