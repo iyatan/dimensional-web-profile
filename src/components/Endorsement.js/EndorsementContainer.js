@@ -2,7 +2,7 @@ import EndorsementElement from "./EndorsementElement";
 
 const EndorsementContainer = ({ endorsement }) => {
   return (
-    <div className="flex flex-row flex-wrap">
+    <div className=" flex overflow-x-auto sm:flex sm:flex-row sm:flex-wrap">
       {endorsement.map((item, index) => {
         return (
           <div className="m-1 " key={index}>

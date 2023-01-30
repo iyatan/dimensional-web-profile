@@ -23,7 +23,7 @@ const Searchbar = ({ traits, onFocus, onBlur, showSuggestions }) => {
           className={`block overflow-hidden rounded-md z-10 ${
             !showSuggestions
               ? "relative sm:fixed "
-              : "fixed bg-[#2E2927] w-[98%]  ml-[-25%] sm:w-auto sm:ml-[0%]"
+              : "fixed bg-[#2E2927] w-full  ml-[-30%] sm:w-auto sm:ml-[0%]"
           }`}
         >
           <div className="relative sm:p-3  ">
@@ -49,7 +49,7 @@ const Searchbar = ({ traits, onFocus, onBlur, showSuggestions }) => {
               id="default-search"
               className={`block outline-none py-2 text-sm text-gray-900 border border-gray-300  bg-gray-50 ${
                 !showSuggestions
-                  ? "w-10 h-10 sm:w-[30vw] sm:rounded-lg px-4 sm:px-10 rounded-full "
+                  ? "w-10 h-10 mr-2 sm:w-[30vw] sm:rounded-lg px-4 sm:px-10 rounded-full "
                   : "rounded-lg w-screen mx-2   sm:w-[30vw] px-10 sm:px-10"
               }`}
               placeholder="Search traits"
@@ -62,7 +62,7 @@ const Searchbar = ({ traits, onFocus, onBlur, showSuggestions }) => {
           </div>
           {showSuggestions && (
             <div className="pb-3">
-              <div className="px-3 text-white  ">Traits</div>
+              <div className=" font-sans text-xl px-3 text-white  ">Traits</div>
               {filteredTraits.map((trait) => (
                 <div className="cursor-pointer py-4 px-3 border-2 border-white mx-2 flex">
                   <div className=" basis-[15%]">
@@ -70,7 +70,9 @@ const Searchbar = ({ traits, onFocus, onBlur, showSuggestions }) => {
                     <ElementCicle colour={trait.colorHexCodes} />
                   </div>
                   <div className=" basis-[70%]">
-                    <p className="text-sm font-medium ">{trait.name}</p>
+                    <p className="text-sm font-medium text-gray-300 ">
+                      {trait.name}
+                    </p>
                     <ScoreBar percentage={trait.score} />
                   </div>
                   <div className=" basis-[15%] text-right">

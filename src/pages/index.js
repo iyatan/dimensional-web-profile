@@ -57,7 +57,7 @@ export default function Home() {
                 width={75}
                 alt="logo"
               ></img>
-              <h1 className="" width={300}>
+              <h1 className="font-sans text-xl" width={300}>
                 Dimensional
               </h1>
             </div>
@@ -78,11 +78,13 @@ export default function Home() {
           <div className="mt-[8%] flex flex-col items-center">
             <ProfileFigure size={200} />
             <div className="sm:hidden text-center">
-              <div className="text-3xl text-center">{profileData.userName}</div>
+              <div className="font-sans text-3xl text-center">
+                {profileData.userName}
+              </div>
               <span>{profileData.profileUrl.slice(8)}</span>
             </div>
             <div className="flex">
-              <div className="sm:hidden mt-[3%] ">
+              <div className="sm:hidden mt-[3%] mr-2 ">
                 <ProfileFigure size={50} />
               </div>
 
@@ -107,11 +109,11 @@ export default function Home() {
             <PersonalitySummaryTable personality={personalitySummaries} />
           </div>
           <div className="mt-[1%]">
-            <h1 className=" text-2xl">Most Endorsed Elements</h1>
+            <h1 className="font-sans  text-2xl">Most Endorsed Elements</h1>
             <EndorsementContainer endorsement={endorsement} />
           </div>
           <div className="mt-[3%] text-white">
-            <h1 className=" text-2xl">Adjectives</h1>
+            <h1 className="font-sans  text-2xl">Adjectives</h1>
 
             <p className="py-2">{profileData.adjectives.join(", ")}</p>
           </div>

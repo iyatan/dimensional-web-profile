@@ -14,6 +14,9 @@ module.exports = {
         black: "#181716",
         white: "#FFFFF2",
       },
+      fontFamily: {
+        abc: ["Source Code Pro", "monospace"],
+      },
     },
   },
   plugins: [],

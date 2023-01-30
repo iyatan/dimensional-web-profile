@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   background-color: #181716;
+  font-family: "Source Code Pro", monospace;
 }
