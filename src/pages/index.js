@@ -5,6 +5,7 @@ import { getProfile, getPersonalitySummaries, getTraits } from "utils/apis";
 import PersonalitySummaryTable from "@/components/PersonalitySummaryTable/PersonalitySummaryTable";
 import EndorsementElement from "@/components/Endorsement.js/EndorsementElement";
 import EndorsementContainer from "@/components/Endorsement.js/EndorsementContainer";
+import Image from "next/image";
 
 export default function Home() {
   const [profileData, setProfileData] = useState({});
@@ -51,12 +52,13 @@ export default function Home() {
         <div className="basis-[40%] sm:pr-[10%] ">
           <div className="mt-[3%] flex  sm:block ">
             <div>
-              <img
+              <Image
+                height={10}
                 className="hidden sm:block"
-                src="./images/logo-dimensional.png"
+                src="/images/logo-dimensional.png"
                 width={75}
                 alt="logo"
-              ></img>
+              ></Image>
               <h1 className="font-sans text-xl" width={300}>
                 Dimensional
               </h1>

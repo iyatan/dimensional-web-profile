@@ -63,8 +63,11 @@ const Searchbar = ({ traits, onFocus, onBlur, showSuggestions }) => {
           {showSuggestions && (
             <div className="pb-3">
               <div className=" font-sans text-xl px-3 text-white  ">Traits</div>
-              {filteredTraits.map((trait) => (
-                <div className="cursor-pointer py-4 px-3 border-2 border-white mx-2 flex">
+              {filteredTraits.map((trait, index) => (
+                <div
+                  key={index}
+                  className="cursor-pointer py-4 px-3 border-2 border-white mx-2 flex"
+                >
                   <div className=" basis-[15%]">
                     {" "}
                     <ElementCicle colour={trait.colorHexCodes} />
