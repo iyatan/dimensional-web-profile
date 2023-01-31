@@ -1,6 +1,6 @@
 import React from "react";
 
-const RoundComponent = ({ size }) => {
+const ProfileAvatar = ({ size }) => {
   return (
     <div
       className={`relative rounded-full bg-gradient-to-b from-blue-700 via-red-400 to-yellow-500`}
@@ -17,4 +17,4 @@ const RoundComponent = ({ size }) => {
   );
 };
 
-export default RoundComponent;
+export default ProfileAvatar;

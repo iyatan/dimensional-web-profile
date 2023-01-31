@@ -1,9 +1,8 @@
 import Searchbar from "@/components/Shared/SearchBar";
-import ProfileFigure from "@/components/Shared/ProfileFigure";
+import ProfileAvatar from "@/components/Shared/ProfileAvatar";
 import { useState, useEffect } from "react";
 import { getProfile, getPersonalitySummaries, getTraits } from "utils/apis";
 import PersonalitySummaryTable from "@/components/PersonalitySummaryTable/PersonalitySummaryTable";
-import EndorsementElement from "@/components/Endorsement.js/EndorsementElement";
 import EndorsementContainer from "@/components/Endorsement.js/EndorsementContainer";
 import Image from "next/image";
 
@@ -78,7 +77,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-[8%] flex flex-col items-center">
-            <ProfileFigure size={200} />
+            <ProfileAvatar size={200} />
             <div className="sm:hidden text-center">
               <div className="font-sans text-3xl text-center">
                 {profileData.userName}
@@ -87,7 +86,7 @@ export default function Home() {
             </div>
             <div className="flex">
               <div className="sm:hidden mt-[3%] mr-2 ">
-                <ProfileFigure size={50} />
+                <ProfileAvatar size={50} />
               </div>
 
               <div className="mt-[3%] mr-16">{profileData.description}</div>

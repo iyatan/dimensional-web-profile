@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import Checkmarks from "./Checkmarks";
-import ElementCicle from "./ElementCircle";
+import ElementCircle from "./ElementCircle";
 import ScoreBar from "./ScoreBar";
 
 const Searchbar = ({ traits, onFocus, onBlur, showSuggestions }) => {
@@ -70,7 +70,7 @@ const Searchbar = ({ traits, onFocus, onBlur, showSuggestions }) => {
                 >
                   <div className=" basis-[15%]">
                     {" "}
-                    <ElementCicle colour={trait.colorHexCodes} />
+                    <ElementCircle colour={trait.colorHexCodes} />
                   </div>
                   <div className=" basis-[70%]">
                     <p className="text-sm font-medium text-gray-300 ">
